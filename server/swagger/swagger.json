@@ -1,0 +1,40 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My API",
+        "version": "1.0.0",
+        "description": "A simple Express API with CRUD operations and Swagger documentation"
+    },
+    "components": {
+        "securitySchemes": {
+            "BearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    },
+    "paths": {
+        "/api/test/greet": {
+            "$ref": "./paths/test.json"
+        },
+        "/api/users": {
+            "$ref": "./paths/user.json"
+        },
+        "/api/users/register": {
+            "$ref": "./paths/user.json#/register"
+        },
+        "/api/users/login": {
+            "$ref": "./paths/user.json#/login"
+        },
+        "/api/todos": {
+            "$ref": "./paths/todo.json"
+        },
+        "/api/todos/{id}": {
+            "$ref": "./paths/todo.json#/updateDeleteTodo"
+        },
+        "/api/todos/delete/all": {
+            "$ref": "./paths/todo.json#/deleteAllTodos"
+        }
+    }
+}
