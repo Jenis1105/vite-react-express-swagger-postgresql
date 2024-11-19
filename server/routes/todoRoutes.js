@@ -6,7 +6,7 @@ const auth = require("../middleware/auth"); // auth middleware
 
 router.get('/', auth, todoController.getAllTodos);
 router.post('/', auth, todoController.createTodo);
-router.put('/', auth, todoController.updateTodo);
+router.put('/:id', auth, todoController.updateTodo);
 router.delete('/:id', auth, todoController.deleteTodo);
 
 router.delete('/delete/all', auth, todoController.deleteAllTodos);

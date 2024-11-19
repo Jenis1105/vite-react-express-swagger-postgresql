@@ -58,7 +58,6 @@
                     "type": "string"
                 }
             }
-            
         ],
         "requestBody": {
             "required": true,
@@ -102,26 +101,47 @@
             ],
             "summary": "Update a todo",
             "description": "Update a specific todo by its ID.",
+            "security": [
+                {
+                    "BearerAuth": []
+                }
+            ],
             "parameters": [
                 {
                     "name": "id",
                     "in": "path",
                     "required": true,
-                    "type": "string",
+                    "type": "int",
                     "description": "The ID of the todo to update."
-                },
-                {
-                    "name": "body",
-                    "in": "body",
-                    "required": true,
-                    "schema": {
-                        "$ref": "#/definitions/Todo"
-                    }
                 }
             ],
+            "requestBody": {
+                "required": true,
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "task": {
+                                    "type": "string",
+                                    "example": "Updated task"
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            },
             "responses": {
                 "200": {
-                    "description": "Todo updated"
+                    "description": "Todo updated",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/definitions/Todo"
+                            }
+                        }
+                    }
                 },
                 "400": {
                     "description": "Invalid input"
@@ -143,6 +163,11 @@
             ],
             "summary": "Delete a todo",
             "description": "Delete a specific todo by its ID.",
+            "security": [
+                {
+                    "BearerAuth": []
+                }
+            ],
             "parameters": [
                 {
                     "name": "id",
@@ -175,6 +200,11 @@
             ],
             "summary": "Delete all todos",
             "description": "Delete all todos for the authenticated user.",
+            "security": [
+                {
+                    "BearerAuth": []
+                }
+            ],
             "parameters": [],
             "responses": {
                 "200": {
